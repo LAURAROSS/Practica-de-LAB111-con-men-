@@ -1,0 +1,174 @@
+#NOMBRE: ANA ROSA CHOQUE LAURA
+#MATERIA: LAB 111
+#PARALELO: F
+#CARRERA: INFORMATICA
+#El usuario=laura y la contraseña=L12345aura
+import os
+verifica=True
+
+while verifica:
+    u=input('Nombre de Usuario: ')
+    con=input('Contraseña: ')
+    if u=="laura" and con=="L12345aura":
+        os.system("cls")
+        continuar=True  
+        print('1. División de dos números')
+        print('2. Divisores')
+        print('3. Numeros Capicua')
+        print('4. Cambio de base')
+        print('5. Salir')
+        
+
+        while continuar:
+            n=int(input('Seleccione una opción: '))
+            os.system("cls")
+            if n==1:
+                #División de 2 números
+                a=int(input('Introduzca el dividendo: '))
+                b=int(input('Introduzca el divisor: '))
+                if b==0 and a!=0:
+                    print('Error: no esta definido la división entre 0')
+                if b==0 and a==0:
+                    print('Error: no esta definido la división')
+                elif a==0 and b!=0:
+                    print('La división es 0')
+                elif a>=b and a!=0 and b!=0:
+                    aux=a
+                    c=0
+                    while aux>=b:
+                        aux=aux-b
+                        c=c+1
+                    c1=0
+                    #para obtener una división con 1 decimal
+                    if aux<b and aux!=0:
+                        f=0
+                        for i in range (1):
+                            c1=0
+                            aux=aux*10
+                            while aux>=b:
+                                aux=aux-b
+                                c1=c1+1
+                            f=c1+f*10**i
+                    if c1!=0:  
+                        f=c+f*10**(-1)
+                        modu=a-b*c
+                        print('La división con decimales es ',f,' o la división no decimal es ',c,' y su  modulo seria ',modu)
+                    else:
+                        print('La división es ',c,' y el modulo es 0')
+                elif a<=b and a!=0 and b!=0:
+                    aux=a
+                    f=0
+                    for i in range (1):
+                            c1=0
+                            aux=aux*10
+                            while aux>=b:
+                                aux=aux-b
+                                c1=c1+1
+                            f=c1+f*10**i
+                    f=f*10**(-1)
+                    print('La división con decimales es ',round(f,2),' o la división no decimal es 0 y su  modulo seria ',a)
+
+
+                
+            elif n==2:
+                #Halla los divisores de un número
+                print('Introducir un número mayor a 99999999999999')
+                n=int(input('N= '))
+                if n>99999999999999:
+                    aux=n
+                    c=1
+                    while c<=n:
+                        aux=n
+                        c1=1
+                        while aux>0:
+                            c1=c1+1
+                            aux=aux-c
+                        if aux==0:
+                            print(c)
+                        c=c+1
+                else:
+                    print('vuelva a intentarlo')   
+            elif n==3:
+                #Lee un número  y halla los números de 3 dígitos que existe en dicho número y verifica si son capicua
+                n=input('Introduzca un número mayor a 99999999: ')
+                x=int(n)
+                if x>99999999:
+                    c=0
+                    i=0
+                    y=len(n)-2
+                    while i<y:
+                        x=n[i:i+3]
+                        #print(x)
+                        z=x[::-1]
+                        #print(z)
+                        i=i+1
+                        if x==z:
+                            print( x,' es capicua')
+                        else:
+                            print(x,' no es capicua')
+
+            elif n==4:
+                #Lee un número entero N en base decimal y una base X y lo convierte a la base x
+                n=int(input('Introduzca un número de base 10: '))
+                x=int(input('Introduzca la base a la que desea convertir: '))
+                y=""
+                aux=n
+                j=0
+                while aux>=x:
+                    c=0
+                    while aux>=x:
+                        aux=aux-x
+                        c=c+1
+                    aux=c
+                    r=n-(x*c)
+                    n=c
+                    if r>=0 and r<=9:
+                        y=y+str(r)
+                    if r>=11:
+                        if r==10:
+                            r="A"
+                            y=y+r
+                        elif r==11:
+                            r="B"
+                            y=y+r
+                        elif r==12:
+                            r="C"
+                            y=y+r
+                        elif r==13:
+                            r="D"
+                            y=y+r
+                        elif r==14:
+                            r="E"
+                            y=y+r
+                        elif r==15:
+                            r="F"
+                            y=y+r
+                        elif r==16:
+                            r="G"
+                            y=y+r
+                        elif r==17:
+                            r="H"
+                            y=y+r
+                        elif r==18:
+                            r="I"
+                            y=y+r
+                        elif r==19:
+                            r="J"
+                            y=y+r
+                        elif r==20:
+                            r="K"
+                            y=y+r
+                y=y+str(c)
+                y=y[::-1]
+                print('La conversión es ',y)
+
+            elif n==5:
+                continuar=False
+            
+    else:
+         os.system("cls")
+         salida=input("Error: escriba S si desea intentar nuevamente: ")
+         os.system("cls")
+         if salida!="S" or salida!="s":
+             verifica=False
+         
